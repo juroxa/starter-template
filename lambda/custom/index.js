@@ -14,13 +14,14 @@ var handlers = {
     'NewSession': function () {
         this.emit('MainIntent')
     },
-    'SessionEndedRequest' : function() {
-        console.log('Session ended with reason: ' + this.event.request.reason);
-    },
     'MainIntent' : function() {
         this.response.speak('Hello there!')
         this.emit(':responseReady');
     },
+    'SessionEndedRequest' : function() {
+        console.log('Session ended with reason: ' + this.event.request.reason);
+    },
+
     'AMAZON.StopIntent' : function() {
         this.response.speak('Bye');
         this.emit(':responseReady');
