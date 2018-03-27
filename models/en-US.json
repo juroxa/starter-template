@@ -14,8 +14,12 @@
                 },
                 {
                   "name": "AMAZON.StopIntent",
+                  "samples": []
+                },
+                {
+                  "name": "MainIntent",
                   "samples": [
-                      "stop"
+                      "Hello"
                   ]
                 }
             ]

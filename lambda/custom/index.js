@@ -12,18 +12,21 @@ exports.handler = function(event, context) {
 
 var handlers = {
     'NewSession': function () {
-        this.response.speak('Hello World!')
-        this.emit(':responseReady');
+        this.emit('MainIntent')
     },
     'SessionEndedRequest' : function() {
         console.log('Session ended with reason: ' + this.event.request.reason);
+    },
+    'MainIntent' : function() {
+        this.response.speak('Hello there!')
+        this.emit(':responseReady');
     },
     'AMAZON.StopIntent' : function() {
         this.response.speak('Bye');
         this.emit(':responseReady');
     },
     'AMAZON.HelpIntent' : function() {
-        this.response.speak("You can try: 'alexa, hello world'");
+        this.response.speak("You can try: 'alexa, hello'");
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent' : function() {
@@ -31,6 +34,7 @@ var handlers = {
         this.emit(':responseReady');
     },
     'Unhandled' : function() {
-        this.emit('AMAZON.HelpIntent')
+        this.response.speak("You can try: 'alexa, hello'");
+        this.emit(':responseReady');
     }
 };
